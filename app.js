@@ -2,11 +2,10 @@ const express = require('express')
 const axios = require('axios')
 const app = express()
 
-const PORT = process.env.PORT || 3001
 const URLBase = 'https://api.github.com/search/repositories?q='
 
 app.get('/', async (_, res) => {
-    res.send('Welcome to API.')
+    res.status(200).send('Welcome to API.')
 })
 
 app.get('/search', async (req, res) => {
@@ -25,7 +24,7 @@ app.get('/search', async (req, res) => {
 
     }
 
-    res.send('Use one of languages available on Github search')
+    res.status(404).send('Use one of languages available on Github search')
 })
 
-app.listen(PORT, () => console.log(`Server Started on ${PORT}`))
+module.exports = app
